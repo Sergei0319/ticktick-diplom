@@ -1,0 +1,43 @@
+name: ticktick
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: ticktick_db
+      POSTGRES_USER: ticktick_user
+      POSTGRES_PASSWORD: ticktick_user
+    ports:
+      - "5434:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./Backend/ticktick_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+
+  api:
+    build: ./Backend
+    env_file: ./Backend/.env
+    environment:
+      DATABASE_URL: postgresql+psycopg2://ticktick_user:ticktick_user@db:5432/ticktick_db
+      CORS_ORIGINS: http://localhost:5173,http://localhost:3000,http://localhost
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      - uploads:/app/uploads
+    command: >
+      sh -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+
+  front:
+    build:
+      context: ./Front
+      args:
+        VITE_API_URL: http://localhost:8000
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+
+volumes:
+  pgdata:
+  uploads:
