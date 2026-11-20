@@ -1,8 +1,3 @@
-/**
- * Это визитка на странице профиля: почта, имя, роль.
- * Только смотреть, не редактировать.
- * Данные приходят с сервера одним куском.
- */
 import { Card, Descriptions, Tag } from "antd";
 
 export function ProfileCard({ profile }) {

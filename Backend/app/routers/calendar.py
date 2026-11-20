@@ -1,12 +1,5 @@
-"""Это комната «календарь на стене» с событиями.
-Событие — название, когда начинается и кончается, можно привязать к заметке.
-Можно смотреть события за выбранные дни, как отрывной календарь.
-Создание и правка только для своих записей.
-"""
-import json
 import uuid
 from datetime import datetime, timezone
-from pathlib import Path
 
 from fastapi import APIRouter, HTTPException, Query, status
 
@@ -58,31 +51,8 @@ def get_one(event_id: uuid.UUID, db: DbSession, user_id: UserId):
     return _map(e)
 
 
-def _dbg(hypothesis_id: str, message: str, data: dict) -> None:
-    # #region agent log
-    try:
-        line = json.dumps(
-            {
-                "sessionId": "bca6d9",
-                "hypothesisId": hypothesis_id,
-                "location": "calendar.py:create",
-                "message": message,
-                "data": data,
-                "timestamp": int(datetime.now(timezone.utc).timestamp() * 1000),
-            },
-            default=str,
-        )
-        Path(r"c:\Users\Сергей\Desktop\!!!Диплом!!!\.cursor\debug-bca6d9.log").open("a", encoding="utf-8").write(
-            line + "\n"
-        )
-    except Exception:
-        pass
-    # #endregion
-
-
 @router.post("", response_model=CalendarEventDto, status_code=status.HTTP_201_CREATED)
 def create(req: CreateEventRequest, db: DbSession, user_id: UserId):
-    _dbg("E", "create called", {"start_at": str(req.start_at), "end_at": str(req.end_at), "title": req.title})
     if req.end_at < req.start_at:
         raise HTTPException(status.HTTP_400_BAD_REQUEST, detail={"message": "end_at не может быть раньше start_at"})
     ev = CalendarEvent(

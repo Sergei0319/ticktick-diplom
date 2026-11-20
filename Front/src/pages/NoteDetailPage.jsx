@@ -1,9 +1,3 @@
-/**
- * Это одна открытая тетрадь — заголовок и текст, можно менять и сохранять.
- * Можно скачать в Word или PDF, как сдать работу учителю на флешке.
- * Удаление отправляет в корзину, не стирает сразу навсегда.
- * Кнопка «назад» возвращает на полку заметок.
- */
 import { Button, Input, Space, message } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";

@@ -1,8 +1,3 @@
-/**
- * Это выдвижной ящик «корзина» с удалёнными заметками.
- * Можно вернуть заметку или стереть навсегда.
- * Выезжает сбоку, как ящик стола.
- */
 import { Button, Drawer, List, Space } from "antd";
 
 export function TrashDrawer({ open, items, onClose, onRestore, onDelete }) {

@@ -1,8 +1,3 @@
-/**
- * Это таблица всех людей в системе для директора.
- * Можно выбрать роль в выпадающем списке или нажать удалить.
- * Каждое действие шлёт запрос на admin API.
- */
 import { Button, Select, Space, Table, Tag } from "antd";
 
 export function AdminUserTable({ users, loading, onRole, onDelete }) {

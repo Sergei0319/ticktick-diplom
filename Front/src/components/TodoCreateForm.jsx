@@ -1,8 +1,3 @@
-/**
- * Это форма «добавить новое дело».
- * Пишешь название, выбираешь важность и срок — отправляешь на сервер.
- * После успеха поля можно очистить для следующей задачи.
- */
 import { Button, Input, Select, Space } from "antd";
 
 export function TodoCreateForm({ title, priority, onTitle, onPriority, onSubmit }) {

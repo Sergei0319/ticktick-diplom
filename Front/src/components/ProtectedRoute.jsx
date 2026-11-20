@@ -1,8 +1,3 @@
-/**
- * Это охранник: без билетика (токена) не пустит внутрь приложения.
- * Отправит на login и запомнит, куда ты хотел попасть.
- * Оборачивает все страницы, кроме /auth.
- */
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
 

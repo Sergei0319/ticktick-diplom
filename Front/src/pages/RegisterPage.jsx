@@ -1,9 +1,3 @@
-/**
- * Это страница «завести новый аккаунт».
- * Пишешь почту, пароль и как тебя звать; сервер создаёт нового пользователя.
- * Если email занят — скажет об этом, не создавая дубликат.
- * После успеха сразу можно работать, как после login.
- */
 import { Button, Form, Input } from "antd";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";

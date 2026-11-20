@@ -1,9 +1,3 @@
-/**
- * Это страница «про меня».
- * Показывает email и имя из /api/users/me.
- * Кнопка выхода говорит серверу «забудь refresh» и чистит карман с билетиками.
- * После выхода снова попадёшь на login.
- */
 import { Button, message } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";

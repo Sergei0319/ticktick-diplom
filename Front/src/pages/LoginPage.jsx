@@ -1,9 +1,3 @@
-/**
- * Это страница «войти в аккаунт».
- * Две строки: email и пароль; кнопка отправляет их на сервер.
- * Если всё верно — билетики в карман (Zustand) и переход на главную.
- * Если ошибка — красное сообщение, как учитель поправил тетрадь.
- */
 import { Button, Form, Input } from "antd";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";

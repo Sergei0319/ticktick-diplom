@@ -1,9 +1,3 @@
-/**
- * Это список дел с галочками.
- * Добавляешь задачу формой, щёлкаешь чекбокс — «сделано» улетает на сервер.
- * Можно удалить ненужное.
- * Loader и ErrorMessage — как на других страницах.
- */
 import { useEffect, useState } from "react";
 import { apiGet, apiSend } from "../api/client";
 import { ErrorMessage } from "../components/ErrorMessage";

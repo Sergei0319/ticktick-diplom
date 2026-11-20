@@ -1,9 +1,3 @@
-/**
- * Это первая страница после входа — «домашняя доска».
- * Считает, сколько у тебя заметок, задач, просроченных дел и событий — как стикеры с цифрами.
- * Пока цифры грузятся, крутится Loader; если интернет упал — ErrorMessage.
- * Отсюда удобно прыгнуть в другие разделы меню.
- */
 import { Card, Col, Row, Statistic } from "antd";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";

@@ -1,8 +1,3 @@
-/**
- * Это красивая рамка для login и register — карточка по центру экрана.
- * Чтобы форма не плавала в углу, а выглядела аккуратно.
- * Внутрь кладётся только форма входа или регистрации.
- */
 import { Card, Typography } from "antd";
 
 export function AuthLayout({ title, children }) {

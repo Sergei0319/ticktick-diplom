@@ -1,9 +1,3 @@
-/**
- * Это страница с событиями по датам.
- * Форма создаёт «встречу» с началом и концом; список показывает карточки EventItem.
- * Даты переводятся в формат, понятный серверу.
- * Удаление убирает событие с сервера.
- */
 import { useEffect, useState } from "react";
 import { apiGet, apiSend } from "../api/client";
 import { ErrorMessage } from "../components/ErrorMessage";
@@ -37,39 +31,11 @@ export function CalendarPage() {
   async function add() {
     try {
       const body = { title, allDay: false, ...rangeToIso(range) };
-      // #region agent log
-      fetch("http://127.0.0.1:7414/ingest/2d110755-a68c-4c09-97b8-79313e1cbe07", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "bca6d9" },
-        body: JSON.stringify({
-          sessionId: "bca6d9",
-          hypothesisId: "C",
-          location: "CalendarPage.jsx:add",
-          message: "POST calendar body",
-          data: body,
-          timestamp: Date.now(),
-        }),
-      }).catch(() => {});
-      // #endregion
       await apiSend("POST", "/api/calendar", body);
       setTitle("");
       setRange(defaultRange());
       load();
     } catch (e) {
-      // #region agent log
-      fetch("http://127.0.0.1:7414/ingest/2d110755-a68c-4c09-97b8-79313e1cbe07", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "bca6d9" },
-        body: JSON.stringify({
-          sessionId: "bca6d9",
-          hypothesisId: "C",
-          location: "CalendarPage.jsx:add",
-          message: "POST calendar error",
-          data: { err: String(e.message) },
-          timestamp: Date.now(),
-        }),
-      }).catch(() => {});
-      // #endregion
       setError(e.message);
     }
   }

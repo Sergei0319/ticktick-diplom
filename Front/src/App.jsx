@@ -1,9 +1,3 @@
-/**
- * Это карта дорог сайта: какая ссылка к какой странице ведёт.
- * Логин и регистрация — для гостей; всё остальное за «замком» с пропуском.
- * Админка — отдельная дверь только для role admin.
- * Меняешь URL — меняется кусок экрана, страница целиком не перезагружается (SPA).
- */
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AdminRoute } from "./components/AdminRoute";
 import { AppLayout } from "./components/AppLayout";

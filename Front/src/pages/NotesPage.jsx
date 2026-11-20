@@ -1,9 +1,3 @@
-/**
- * Это полка со всеми твоими заметками.
- * Можно искать слова, нажать на тег и отфильтровать, открыть корзину удалённого.
- * Кнопка «новая» создаёт пустую заметку и открывает её для редактирования.
- * Списком рулят NoteList и NoteCard — как карточки на доске.
- */
 import { Button, Space } from "antd";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";

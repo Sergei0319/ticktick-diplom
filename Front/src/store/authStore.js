@@ -1,9 +1,3 @@
-/**
- * Это карман, где лежат твои билетики после входа.
- * Zustand хранит токены, имя и роль; persist записывает в localStorage, чтобы не логиниться каждый раз.
- * setSession — положить билеты после login; logout — выбросить и забыть.
- * Меню и охрана маршрутов смотрят сюда: пустишь ли ты или нет.
- */
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

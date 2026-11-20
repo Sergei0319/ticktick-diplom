@@ -1,8 +1,3 @@
-/**
- * Это стопка карточек NoteCard.
- * Если заметок нет — рисует EmptyPlaceholder «здесь пусто».
- * Удобно, чтобы NotesPage не писала один и тот же цикл много раз.
- */
 import { NoteCard } from "./NoteCard";
 import { EmptyPlaceholder } from "./EmptyPlaceholder";
 

@@ -1,9 +1,3 @@
-/**
- * Это рамка вокруг всего сайта после входа: меню слева, контент справа.
- * Как обложка тетради, внутри которой меняются страницы (Outlet).
- * Шапка может показать, как тебя зовут.
- * Гостям на login эта рамка не нужна.
- */
 import { Layout, Typography } from "antd";
 import { Outlet } from "react-router-dom";
 import { SideMenu } from "./SideMenu";

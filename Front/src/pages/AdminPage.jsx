@@ -1,9 +1,3 @@
-/**
- * Это пульт директора школы.
- * Цифры сверху — сколько людей и записей в системе.
- * Таблица снизу — все пользователи; можно сменить роль или убрать человека.
- * Сюда не пустит меню, если ты обычный user.
- */
 import { Card, Col, Row, Statistic } from "antd";
 import { useEffect, useState } from "react";
 import { apiGet, apiSend } from "../api/client";
