@@ -1,3 +1,8 @@
+/**
+ * Заголовок экрана и место справа
+ * для кнопок этого экрана.
+ */
+
 import { Typography } from "antd";
 
 export function PageTitle({ title, extra }) {

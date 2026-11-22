@@ -1,3 +1,8 @@
+"""Профиль того, кто сейчас вошёл.
+Отдаёт id, почту, имя, роль
+и дату создания аккаунта.
+"""
+
 from fastapi import APIRouter
 
 from app.deps import CurrentUser

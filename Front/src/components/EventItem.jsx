@@ -1,3 +1,8 @@
+/**
+ * Карточка одного события.
+ * Показывает время и даёт его удалить.
+ */
+
 import { Button, Card } from "antd";
 
 export function EventItem({ event, onDelete }) {

@@ -1,3 +1,8 @@
+"""Запуск миграций Alembic.
+Берёт адрес базы из настроек приложения
+и сверяет миграции с моделями SQLAlchemy.
+"""
+
 from logging.config import fileConfig
 
 from alembic import context

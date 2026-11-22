@@ -1,3 +1,9 @@
+/**
+ * Экран задач.
+ * Показывает список, создаёт задачу с приоритетом,
+ * отмечает выполнение и удаляет её.
+ */
+
 import { useEffect, useState } from "react";
 import { apiGet, apiSend } from "../api/client";
 import { ErrorMessage } from "../components/ErrorMessage";

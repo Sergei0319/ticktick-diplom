@@ -1,3 +1,9 @@
+/**
+ * Поле ввода строки поиска.
+ * Само ничего не запрашивает,
+ * только передаёт текст родителю.
+ */
+
 import { Input } from "antd";
 
 export function SearchBar({ value, onChange, placeholder = "Поиск..." }) {

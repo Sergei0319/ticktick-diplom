@@ -1,3 +1,9 @@
+/**
+ * Поля названия и дат нового события.
+ * Переводит выбранный интервал в формат,
+ * который ждёт API.
+ */
+
 import { Button, DatePicker, Input, Space } from "antd";
 import dayjs from "dayjs";
 

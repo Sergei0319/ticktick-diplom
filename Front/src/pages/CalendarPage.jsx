@@ -1,3 +1,9 @@
+/**
+ * Экран событий.
+ * Загружает список, создаёт событие
+ * по названию и датам и удаляет выбранное.
+ */
+
 import { useEffect, useState } from "react";
 import { apiGet, apiSend } from "../api/client";
 import { ErrorMessage } from "../components/ErrorMessage";

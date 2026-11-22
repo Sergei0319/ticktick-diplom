@@ -1,3 +1,9 @@
+/**
+ * Личный кабинет.
+ * Загружает профиль с сервера
+ * и при выходе отзывает refresh-токен.
+ */
+
 import { Button, message } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";

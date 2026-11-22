@@ -1,3 +1,9 @@
+/**
+ * Форма создания аккаунта.
+ * Регистрирует пользователя, записывает сессию
+ * и переходит на главную.
+ */
+
 import { Button, Form, Input } from "antd";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";

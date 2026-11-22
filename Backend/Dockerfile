@@ -1,3 +1,6 @@
+# Образ API.
+# Ставит зависимости Python и шрифт для PDF,
+# затем запускает uvicorn на порту 8000.
 FROM python:3.12-slim
 
 WORKDIR /app

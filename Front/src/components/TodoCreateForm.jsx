@@ -1,3 +1,8 @@
+/**
+ * Поля названия и приоритета новой задачи.
+ * Отправку выполняет страница, которой принадлежит форма.
+ */
+
 import { Button, Input, Select, Space } from "antd";
 
 export function TodoCreateForm({ title, priority, onTitle, onPriority, onSubmit }) {

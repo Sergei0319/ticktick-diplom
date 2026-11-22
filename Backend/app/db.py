@@ -1,3 +1,9 @@
+"""Подключение к PostgreSQL через SQLAlchemy.
+Создаёт движок, сессии и базовый класс таблиц.
+На каждый запрос выдаётся своя сессия,
+которая затем закрывается.
+"""
+
 from collections.abc import Generator
 
 from sqlalchemy import create_engine

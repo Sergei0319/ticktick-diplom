@@ -1,3 +1,9 @@
+/**
+ * Форма входа.
+ * Отправляет почту и пароль, сохраняет токены
+ * и открывает главную страницу.
+ */
+
 import { Button, Form, Input } from "antd";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";

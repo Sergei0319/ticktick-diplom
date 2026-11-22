@@ -1,3 +1,9 @@
+/**
+ * Редактор одной заметки.
+ * Сохраняет заголовок, теги и текст.
+ * Скачивает DOCX или PDF и убирает заметку в корзину.
+ */
+
 import { Button, Input, Space, message } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";

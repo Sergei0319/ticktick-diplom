@@ -1,3 +1,8 @@
+/**
+ * Карточка по центру экрана
+ * для форм входа и регистрации.
+ */
+
 import { Card, Typography } from "antd";
 
 export function AuthLayout({ title, children }) {

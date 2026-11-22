@@ -1,3 +1,8 @@
+/**
+ * Выводит карточки заметок одну за другой.
+ * Если записей нет, показывает пустое состояние.
+ */
+
 import { NoteCard } from "./NoteCard";
 import { EmptyPlaceholder } from "./EmptyPlaceholder";
 

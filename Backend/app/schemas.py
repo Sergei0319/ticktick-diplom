@@ -1,3 +1,9 @@
+"""JSON, который API принимает и отдаёт.
+Pydantic проверяет поля и переводит имена
+в camelCase для фронтенда.
+Пароль и хеш токена в ответы не попадают.
+"""
+
 from datetime import datetime
 from uuid import UUID
 

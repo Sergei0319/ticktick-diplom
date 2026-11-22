@@ -1,3 +1,9 @@
+/**
+ * Общая рамка внутренних страниц.
+ * Рисует боковое меню, шапку и место
+ * для текущего экрана.
+ */
+
 import { Layout, Typography } from "antd";
 import { Outlet } from "react-router-dom";
 import { SideMenu } from "./SideMenu";

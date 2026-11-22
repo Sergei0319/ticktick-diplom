@@ -1,3 +1,8 @@
+/**
+ * Ряд тегов заметок.
+ * Повторное нажатие на выбранный тег снимает фильтр.
+ */
+
 import { Tag } from "antd";
 
 export function TagChips({ tags, active, onSelect }) {

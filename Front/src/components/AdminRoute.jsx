@@ -1,3 +1,8 @@
+/**
+ * Не пускает на страницу без роли admin.
+ * В этом случае возвращает на главную.
+ */
+
 import { Navigate } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
 

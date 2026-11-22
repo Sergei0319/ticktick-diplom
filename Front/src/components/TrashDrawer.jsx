@@ -1,3 +1,9 @@
+/**
+ * Боковая панель корзины.
+ * Для удалённой заметки можно восстановить её
+ * или стереть навсегда.
+ */
+
 import { Button, Drawer, List, Space } from "antd";
 
 export function TrashDrawer({ open, items, onClose, onRestore, onDelete }) {

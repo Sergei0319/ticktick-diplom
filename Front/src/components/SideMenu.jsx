@@ -1,3 +1,9 @@
+/**
+ * Пункты меню приложения.
+ * Ведёт на разделы сайта и добавляет админку,
+ * только если в сессии роль admin.
+ */
+
 import { Menu } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";

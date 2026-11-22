@@ -1,3 +1,9 @@
+/**
+ * Настройки сборки Vite.
+ * В разработке запросы к /api и /uploads
+ * уходят на backend localhost:8000.
+ */
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
