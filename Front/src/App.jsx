@@ -1,9 +1,3 @@
-/**
- * Список страниц и кто на них попадает.
- * Вход и регистрация только для гостя.
- * Остальные экраны требуют токен, админка — роль admin.
- */
-
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AdminRoute } from "./components/AdminRoute";
 import { AppLayout } from "./components/AppLayout";

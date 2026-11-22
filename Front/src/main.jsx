@@ -1,9 +1,3 @@
-/**
- * Точка входа интерфейса.
- * Вставляет React в страницу, включает русские
- * подписи Ant Design и маршруты.
- */
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";

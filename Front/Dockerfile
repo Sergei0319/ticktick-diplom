@@ -1,5 +1,3 @@
-# Сборка фронтенда и раздача файлов через nginx.
-# Адрес API зашивается на этапе сборки.
 FROM node:20-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json* ./

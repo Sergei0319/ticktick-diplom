@@ -1,9 +1,3 @@
-/**
- * Главный экран со счётчиками.
- * Запрашивает заметки, задачи, просроченные
- * и события и показывает их количество.
- */
-
 import { Card, Col, Row, Statistic } from "antd";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";

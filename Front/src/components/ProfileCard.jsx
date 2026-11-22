@@ -1,8 +1,3 @@
-/**
- * Карточка с почтой, именем, ролью
- * и датой регистрации пользователя.
- */
-
 import { Card, Descriptions, Tag } from "antd";
 
 export function ProfileCard({ profile }) {

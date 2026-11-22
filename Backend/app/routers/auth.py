@@ -1,9 +1,3 @@
-"""Регистрация, вход, обновление токенов и выход.
-Пароль сравнивается с bcrypt-хешем.
-Refresh-токен хранится как хеш
-и при выходе помечается отозванным.
-"""
-
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, Body, HTTPException, status

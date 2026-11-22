@@ -1,8 +1,3 @@
-/**
- * Память о текущем входе: токены, id, имя и роль.
- * Данные пишутся в localStorage и стираются при выходе.
- */
-
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

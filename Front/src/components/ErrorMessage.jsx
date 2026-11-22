@@ -1,8 +1,3 @@
-/**
- * Красное сообщение об ошибке запроса.
- * Его можно закрыть.
- */
-
 import { Alert } from "antd";
 
 export function ErrorMessage({ message, onClose }) {

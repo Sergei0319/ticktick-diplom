@@ -1,9 +1,3 @@
-/**
- * Список заметок.
- * Фильтрует по тегу, ищет по тексту и создаёт новую.
- * Корзина восстанавливает заметку или удаляет её навсегда.
- */
-
 import { Button, Space } from "antd";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";

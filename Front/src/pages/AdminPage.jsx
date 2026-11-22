@@ -1,9 +1,3 @@
-/**
- * Экран администратора.
- * Показывает общие числа по базе.
- * Можно сменить роль пользователя или удалить аккаунт.
- */
-
 import { Card, Col, Row, Statistic } from "antd";
 import { useEffect, useState } from "react";
 import { apiGet, apiSend } from "../api/client";

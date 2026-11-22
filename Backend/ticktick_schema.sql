@@ -2,8 +2,6 @@
 --  TickTick — Database Schema
 --  PostgreSQL 15+
 -- ============================================================
--- Создаёт таблицы, индексы, триггеры и функцию полнотекстового поиска.
--- Этот скрипт выполняется один раз при первом запуске пустой базы.
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pg_trgm";

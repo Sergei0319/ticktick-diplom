@@ -1,8 +1,3 @@
-"""Превращает заметку в файл DOCX или PDF.
-Убирает простую разметку markdown.
-Для PDF подключает шрифт с кириллицей.
-"""
-
 import re
 from io import BytesIO
 from pathlib import Path

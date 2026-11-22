@@ -1,9 +1,3 @@
-/**
- * Общий клиент запросов к API.
- * В каждый запрос добавляет access-токен.
- * При ответе 401 один раз обновляет его и повторяет вызов.
- */
-
 import axios from "axios";
 import { useAuthStore } from "../store/authStore";
 

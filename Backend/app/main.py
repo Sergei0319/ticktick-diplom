@@ -1,9 +1,3 @@
-"""Точка входа API TickTick.
-Собирает приложение FastAPI, включает CORS,
-раздаёт загруженные файлы и подключает роутеры.
-Адрес /health показывает, что сервер отвечает.
-"""
-
 import os
 from contextlib import asynccontextmanager
 

@@ -5,8 +5,6 @@ Revises:
 Create Date: 2026-03-16
 """
 
-# Добавляет в users колонку role со значением user,
-# если таблица уже есть, а колонки ещё нет.
 from typing import Sequence, Union
 
 import sqlalchemy as sa

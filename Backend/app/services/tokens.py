@@ -1,9 +1,3 @@
-"""Пароли и токены доступа.
-Пароль хешируется через bcrypt,
-access-токен подписывается как JWT.
-Для refresh-токена считаются хеш и срок.
-"""
-
 import hashlib
 import secrets
 import uuid

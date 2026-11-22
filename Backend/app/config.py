@@ -1,9 +1,3 @@
-"""Настройки приложения из файла .env.
-Здесь адрес базы, секрет и сроки JWT,
-папка загрузок и адреса фронтенда,
-которым разрешены запросы.
-"""
-
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 

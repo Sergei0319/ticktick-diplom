@@ -1,8 +1,3 @@
-/**
- * Таблица пользователей для администратора.
- * В ней меняется роль и удаляется аккаунт.
- */
-
 import { Button, Select, Space, Table, Tag } from "antd";
 
 export function AdminUserTable({ users, loading, onRole, onDelete }) {
