@@ -3,6 +3,7 @@ import { Button, Card, Checkbox, Tag } from "antd";
 const pri = { 1: "Высокий", 2: "Средний", 3: "Низкий" };
 const colors = { 1: "red", 2: "orange", 3: "default" };
 
+// Строка одной задачи
 export function TodoItem({ todo, onToggle, onDelete }) {
   return (
     <Card size="small" style={{ marginBottom: 12, opacity: todo.isDone ? 0.65 : 1 }}>

@@ -20,6 +20,7 @@ INLINE_MD = [
 PDF_FONT = "ExportFont"
 
 
+# Убирает markdown-разметку из строки
 def _strip_md(line: str) -> str:
     s = line
     for pat, repl in INLINE_MD:
@@ -27,6 +28,7 @@ def _strip_md(line: str) -> str:
     return s
 
 
+# Регистрирует шрифты для PDF с кириллицей
 def _pdf_font_files() -> tuple[Path, Path]:
     pairs = [
         (
@@ -48,6 +50,7 @@ def _pdf_font_files() -> tuple[Path, Path]:
     raise RuntimeError("Не найден TTF-шрифт с поддержкой кириллицы для PDF")
 
 
+# Собирает PDF-документ из абзацев
 def _make_pdf() -> FPDF:
     regular, bold = _pdf_font_files()
     pdf = FPDF()
@@ -56,6 +59,7 @@ def _make_pdf() -> FPDF:
     return pdf
 
 
+# Экспорт заметки в DOCX
 def export_docx(note: Note) -> bytes:
     doc = Document()
     doc.add_heading(note.title, level=1)
@@ -81,6 +85,7 @@ def export_docx(note: Note) -> bytes:
     return buf.getvalue()
 
 
+# Экспорт заметки в PDF
 def export_pdf(note: Note) -> bytes:
     pdf = _make_pdf()
     pdf.set_auto_page_break(auto=True, margin=15)

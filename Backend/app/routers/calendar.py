@@ -10,6 +10,7 @@ from app.schemas import CalendarEventDto, CreateEventRequest, UpdateEventRequest
 router = APIRouter(prefix="/api/calendar", tags=["calendar"])
 
 
+# Собирает DTO из модели
 def _map(e: CalendarEvent) -> CalendarEventDto:
     return CalendarEventDto(
         id=e.id,
@@ -23,6 +24,7 @@ def _map(e: CalendarEvent) -> CalendarEventDto:
     )
 
 
+# Список событий календаря с фильтром по диапазону дат
 @router.get("", response_model=list[CalendarEventDto])
 def get_events(
     db: DbSession,
@@ -39,6 +41,7 @@ def get_events(
     return [_map(e) for e in events]
 
 
+# Одно событие по id
 @router.get("/{event_id}", response_model=CalendarEventDto)
 def get_one(event_id: uuid.UUID, db: DbSession, user_id: UserId):
     e = (
@@ -51,6 +54,7 @@ def get_one(event_id: uuid.UUID, db: DbSession, user_id: UserId):
     return _map(e)
 
 
+# Создание события календаря
 @router.post("", response_model=CalendarEventDto, status_code=status.HTTP_201_CREATED)
 def create(req: CreateEventRequest, db: DbSession, user_id: UserId):
     if req.end_at < req.start_at:
@@ -71,6 +75,7 @@ def create(req: CreateEventRequest, db: DbSession, user_id: UserId):
     return _map(ev)
 
 
+# Правка события
 @router.put("/{event_id}", response_model=CalendarEventDto)
 def update(event_id: uuid.UUID, req: UpdateEventRequest, db: DbSession, user_id: UserId):
     ev = (
@@ -100,6 +105,7 @@ def update(event_id: uuid.UUID, req: UpdateEventRequest, db: DbSession, user_id:
     return _map(ev)
 
 
+# Мягкое удаление события
 @router.delete("/{event_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete(event_id: uuid.UUID, db: DbSession, user_id: UserId):
     ev = (

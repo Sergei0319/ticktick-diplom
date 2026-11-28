@@ -1,5 +1,6 @@
 import { Button, Drawer, List, Space } from "antd";
 
+// Панель корзины заметок
 export function TrashDrawer({ open, items, onClose, onRestore, onDelete }) {
   return (
     <Drawer title="Корзина" open={open} onClose={onClose} width={420}>

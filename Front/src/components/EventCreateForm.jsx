@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 
 const { RangePicker } = DatePicker;
 
+// Форма создания события
 export function EventCreateForm({ title, range, onTitle, onRange, onSubmit }) {
   const addDisabled = !title?.trim() || !range?.[0] || !range?.[1];
   const handleRange = (v) => {
@@ -36,6 +37,7 @@ export function EventCreateForm({ title, range, onTitle, onRange, onSubmit }) {
   );
 }
 
+// Преобразует диапазон дат в ISO для API
 export function rangeToIso(range) {
   const start = dayjs(range[0]).second(0).millisecond(0);
   const end = dayjs(range[1]).second(0).millisecond(0);
@@ -43,6 +45,7 @@ export function rangeToIso(range) {
   return payload;
 }
 
+// Подставляет диапазон дат по умолчанию
 export function defaultRange() {
   const start = dayjs().hour(10).minute(0).second(0).millisecond(0);
   return [start, start.add(1, "hour")];

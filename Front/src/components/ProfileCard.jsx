@@ -1,5 +1,6 @@
 import { Card, Descriptions, Tag } from "antd";
 
+// Карточка профиля
 export function ProfileCard({ profile }) {
   if (!profile) return null;
   return (

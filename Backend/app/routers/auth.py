@@ -10,6 +10,7 @@ from app.services import tokens as token_svc
 router = APIRouter(prefix="/api/auth", tags=["auth"])
 
 
+# Выдаёт пару access и refresh токенов
 def _issue_tokens(db, user: User) -> AuthResponse:
     raw = token_svc.generate_refresh_token()
     db.add(
@@ -29,6 +30,7 @@ def _issue_tokens(db, user: User) -> AuthResponse:
     )
 
 
+# Регистрация нового пользователя
 @router.post("/register", response_model=AuthResponse)
 def register(req: RegisterRequest, db: DbSession):
     email = req.email.lower()
@@ -45,6 +47,7 @@ def register(req: RegisterRequest, db: DbSession):
     return _issue_tokens(db, user)
 
 
+# Вход по email и паролю
 @router.post("/login", response_model=AuthResponse)
 def login(req: LoginRequest, db: DbSession):
     user = (
@@ -57,6 +60,7 @@ def login(req: LoginRequest, db: DbSession):
     return _issue_tokens(db, user)
 
 
+# Обновление пары токенов по refresh
 @router.post("/refresh", response_model=AuthResponse)
 def refresh(db: DbSession, refresh_token: str = Body(...)):
     token_hash = token_svc.hash_token(refresh_token)
@@ -76,6 +80,7 @@ def refresh(db: DbSession, refresh_token: str = Body(...)):
     return _issue_tokens(db, user)
 
 
+# Выход и отзыв refresh-токена
 @router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)
 def logout(db: DbSession, refresh_token: str = Body(...)):
     token_hash = token_svc.hash_token(refresh_token)

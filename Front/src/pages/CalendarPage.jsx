@@ -6,6 +6,7 @@ import { EventItem } from "../components/EventItem";
 import { Loader } from "../components/Loader";
 import { PageTitle } from "../components/PageTitle";
 
+// Календарь событий
 export function CalendarPage() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,6 +14,7 @@ export function CalendarPage() {
   const [title, setTitle] = useState("");
   const [range, setRange] = useState(defaultRange());
 
+  // Загружает список с сервера
   async function load() {
     setLoading(true);
     try {
@@ -28,6 +30,7 @@ export function CalendarPage() {
     load();
   }, []);
 
+  // Создаёт событие по данным формы
   async function add() {
     try {
       const body = { title, allDay: false, ...rangeToIso(range) };

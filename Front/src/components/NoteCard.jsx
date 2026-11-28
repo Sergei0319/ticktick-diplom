@@ -1,6 +1,7 @@
 import { Card, Tag } from "antd";
 import { Link } from "react-router-dom";
 
+// Карточка заметки в списке
 export function NoteCard({ note, snippet }) {
   return (
     <Link to={`/notes/${note.id}`}>

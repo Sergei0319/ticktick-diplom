@@ -1,5 +1,6 @@
 import { Tag } from "antd";
 
+// Фильтр по тегам
 export function TagChips({ tags, active, onSelect }) {
   if (!tags?.length) return null;
   return (

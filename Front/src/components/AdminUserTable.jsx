@@ -1,5 +1,6 @@
 import { Button, Select, Space, Table, Tag } from "antd";
 
+// Таблица пользователей в админке
 export function AdminUserTable({ users, loading, onRole, onDelete }) {
   const columns = [
     { title: "Email", dataIndex: "email" },

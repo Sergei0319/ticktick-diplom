@@ -1,5 +1,6 @@
 import { Button, Input, Select, Space } from "antd";
 
+// Форма создания задачи
 export function TodoCreateForm({ title, priority, onTitle, onPriority, onSubmit }) {
   return (
     <Space.Compact style={{ width: "100%", marginBottom: 16 }}>

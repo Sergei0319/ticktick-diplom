@@ -15,6 +15,7 @@ from app.services import wiki_links
 router = APIRouter(prefix="/api/notes", tags=["notes"])
 
 
+# Собирает полный ответ заметки вместе с входящими и исходящими ссылками
 def _map_note(note: Note) -> NoteDto:
     return NoteDto(
         id=note.id,
@@ -34,6 +35,7 @@ def _map_note(note: Note) -> NoteDto:
     )
 
 
+# Список живых заметок текущего пользователя, по желанию с фильтром по тегу
 @router.get("", response_model=list[NoteListItemDto])
 def get_all(db: DbSession, user_id: UserId, tag: str | None = None):
     q = db.query(Note).filter(Note.user_id == user_id, Note.is_deleted.is_(False))
@@ -45,6 +47,7 @@ def get_all(db: DbSession, user_id: UserId, tag: str | None = None):
     ]
 
 
+# Корзина: удалённые заметки, последние удалённые сверху
 @router.get("/trash", response_model=list[NoteListItemDto])
 def get_trash(db: DbSession, user_id: UserId):
     notes = (
@@ -58,6 +61,7 @@ def get_trash(db: DbSession, user_id: UserId):
     ]
 
 
+# Полнотекстовый поиск по своим заметкам
 @router.get("/search", response_model=list[SearchResultDto])
 def search(db: DbSession, user_id: UserId, q: str = Query(...)):
     if not q.strip():
@@ -69,6 +73,7 @@ def search(db: DbSession, user_id: UserId, q: str = Query(...)):
     return [SearchResultDto(**row) for row in rows]
 
 
+# Одна заметка со связями
 @router.get("/{note_id}", response_model=NoteDto)
 def get_one(note_id: uuid.UUID, db: DbSession, user_id: UserId):
     note = (
@@ -85,6 +90,7 @@ def get_one(note_id: uuid.UUID, db: DbSession, user_id: UserId):
     return _map_note(note)
 
 
+# Создание сущности и сохранение в базе
 @router.post("", response_model=NoteDto, status_code=status.HTTP_201_CREATED)
 def create(req: CreateNoteRequest, db: DbSession, user_id: UserId):
     note = Note(user_id=user_id, title=req.title, content=req.content, tags=req.tags or [])
@@ -96,6 +102,7 @@ def create(req: CreateNoteRequest, db: DbSession, user_id: UserId):
     return _map_note(note)
 
 
+# Правка полей сущности
 @router.put("/{note_id}", response_model=NoteDto)
 def update(note_id: uuid.UUID, req: UpdateNoteRequest, db: DbSession, user_id: UserId):
     note = (
@@ -118,6 +125,7 @@ def update(note_id: uuid.UUID, req: UpdateNoteRequest, db: DbSession, user_id: U
     return _map_note(note)
 
 
+# Мягкое удаление: сущность уходит в корзину
 @router.delete("/{note_id}", status_code=status.HTTP_204_NO_CONTENT)
 def soft_delete(note_id: uuid.UUID, db: DbSession, user_id: UserId):
     note = (
@@ -132,6 +140,7 @@ def soft_delete(note_id: uuid.UUID, db: DbSession, user_id: UserId):
     db.commit()
 
 
+# Возврат сущности из корзины
 @router.post("/{note_id}/restore", response_model=NoteDto)
 def restore(note_id: uuid.UUID, db: DbSession, user_id: UserId):
     note = (
@@ -148,6 +157,7 @@ def restore(note_id: uuid.UUID, db: DbSession, user_id: UserId):
     return _map_note(note)
 
 
+# Окончательное удаление, только из корзины
 @router.delete("/{note_id}/permanent", status_code=status.HTTP_204_NO_CONTENT)
 def hard_delete(note_id: uuid.UUID, db: DbSession, user_id: UserId):
     note = (
@@ -161,6 +171,7 @@ def hard_delete(note_id: uuid.UUID, db: DbSession, user_id: UserId):
     db.commit()
 
 
+# Загрузка файла к заметке
 @router.post("/{note_id}/attachments")
 async def upload_attachment(
     note_id: uuid.UUID,

@@ -10,6 +10,7 @@ import { SearchBar } from "../components/SearchBar";
 import { TagChips } from "../components/TagChips";
 import { TrashDrawer } from "../components/TrashDrawer";
 
+// Список заметок, поиск и корзина
 export function NotesPage() {
   const nav = useNavigate();
   const [notes, setNotes] = useState([]);
@@ -21,6 +22,7 @@ export function NotesPage() {
   const [trashOpen, setTrashOpen] = useState(false);
   const [trash, setTrash] = useState([]);
 
+  // Загружает список с сервера
   async function load() {
     setLoading(true);
     try {
@@ -58,11 +60,13 @@ export function NotesPage() {
     return [...s].sort();
   }, [notes]);
 
+  // Создаёт пустую заметку и открывает редактор
   async function createNote() {
     const note = await apiSend("POST", "/api/notes", { title: "Новая заметка", content: "", tags: [] });
     nav(`/notes/${note.id}`);
   }
 
+  // Открывает панель корзины
   async function openTrash() {
     setTrash(await apiGet("/api/notes/trash"));
     setTrashOpen(true);

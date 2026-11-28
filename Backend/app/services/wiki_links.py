@@ -8,6 +8,7 @@ from app.models import Note, NoteLink
 WIKI_LINK = re.compile(r"\[\[(.+?)\]\]")
 
 
+# Пересобирает исходящие вики-ссылки заметки по её тексту
 def sync_links(db: Session, note: Note, user_id: uuid.UUID) -> None:
     titles = list(
         dict.fromkeys(

@@ -8,6 +8,7 @@ import { PageTitle } from "../components/PageTitle";
 
 const { TextArea } = Input;
 
+// Страница редактирования одной заметки
 export function NoteDetailPage() {
   const { id } = useParams();
   const nav = useNavigate();
@@ -31,6 +32,7 @@ export function NoteDetailPage() {
     })();
   }, [id]);
 
+  // Сохраняет заметку на сервере
   async function save() {
     setSaving(true);
     try {
@@ -52,11 +54,13 @@ export function NoteDetailPage() {
     }
   }
 
+  // Отправляет заметку в корзину
   async function remove() {
     await apiSend("DELETE", `/api/notes/${id}`);
     nav("/notes");
   }
 
+  // Скачивает заметку в DOCX или PDF
   async function exportFmt(fmt) {
     try {
       const res = await http.get(`/api/notes/${id}/export/${fmt}`, { responseType: "blob" });

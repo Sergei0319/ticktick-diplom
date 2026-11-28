@@ -10,6 +10,7 @@ from app.schemas import AdminStatsDto, AdminUserDto, SetRoleRequest
 router = APIRouter(prefix="/api/admin", tags=["admin"])
 
 
+# Сводная статистика для админ-панели
 @router.get("/stats", response_model=AdminStatsDto)
 def stats(db: DbSession, _: AdminUser):
     return AdminStatsDto(
@@ -20,6 +21,7 @@ def stats(db: DbSession, _: AdminUser):
     )
 
 
+# Список всех пользователей
 @router.get("/users", response_model=list[AdminUserDto])
 def list_users(db: DbSession, _: AdminUser):
     users = db.query(User).order_by(User.created_at.desc()).all()
@@ -36,6 +38,7 @@ def list_users(db: DbSession, _: AdminUser):
     ]
 
 
+# Меняет роль пользователя
 @router.patch("/users/{user_id}/role", response_model=AdminUserDto)
 def set_role(user_id: uuid.UUID, req: SetRoleRequest, db: DbSession, admin: AdminUser):
     if req.role not in ("user", "admin"):
@@ -59,6 +62,7 @@ def set_role(user_id: uuid.UUID, req: SetRoleRequest, db: DbSession, admin: Admi
     )
 
 
+# Мягко удаляет пользователя
 @router.delete("/users/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
 def soft_delete_user(user_id: uuid.UUID, db: DbSession, admin: AdminUser):
     if user_id == admin.id:

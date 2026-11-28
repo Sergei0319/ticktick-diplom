@@ -12,11 +12,13 @@ from app.services import export_service
 router = APIRouter(prefix="/api/notes/{note_id}/export", tags=["export"])
 
 
+# Очищает имя файла от недопустимых символов
 def _safe_name(title: str) -> str:
     clean = re.sub(r'[<>:"/\\|?*]', "", title).replace(" ", "_").strip(".")
     return clean or "note"
 
 
+# Собирает заголовок Content-Disposition для скачивания
 def _attachment_disposition(title: str, ext: str) -> str:
     """HTTP-заголовки только latin-1; кириллицу кодируем через filename* (RFC 5987)."""
     base = _safe_name(title)
@@ -25,6 +27,7 @@ def _attachment_disposition(title: str, ext: str) -> str:
     return f"attachment; filename=\"{ascii_fallback}.{ext}\"; filename*=UTF-8''{encoded}"
 
 
+# Экспорт заметки в DOCX
 @router.get("/docx")
 def export_docx(note_id: uuid.UUID, db: DbSession, user_id: UserId):
     note = (
@@ -42,6 +45,7 @@ def export_docx(note_id: uuid.UUID, db: DbSession, user_id: UserId):
     )
 
 
+# Экспорт заметки в PDF
 @router.get("/pdf")
 def export_pdf(note_id: uuid.UUID, db: DbSession, user_id: UserId):
     note = (

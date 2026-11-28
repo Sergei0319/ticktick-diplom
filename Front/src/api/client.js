@@ -43,11 +43,13 @@ http.interceptors.response.use(
   }
 );
 
+// GET-запрос к API, возвращает тело ответа
 export async function apiGet(url) {
   const { data } = await http.get(url);
   return data;
 }
 
+// POST, PUT, PATCH или DELETE с телом JSON
 export async function apiSend(method, url, body) {
   const { data } = await http.request({ method, url, data: body });
   return data;

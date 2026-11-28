@@ -6,6 +6,7 @@ import { ErrorMessage } from "../components/ErrorMessage";
 import { Loader } from "../components/Loader";
 import { PageTitle } from "../components/PageTitle";
 
+// Главная со сводной статистикой
 export function HomePage() {
   const [data, setData] = useState({ notes: 0, todos: 0, overdue: 0, events: 0 });
   const [loading, setLoading] = useState(true);

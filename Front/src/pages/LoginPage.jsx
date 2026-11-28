@@ -6,12 +6,14 @@ import { AuthLayout } from "../components/AuthLayout";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { useAuthStore } from "../store/authStore";
 
+// Форма входа
 export function LoginPage() {
   const nav = useNavigate();
   const setSession = useAuthStore((s) => s.setSession);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Отправляет форму входа на сервер
   async function onFinish(values) {
     setLoading(true);
     setError(null);

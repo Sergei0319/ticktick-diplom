@@ -13,6 +13,7 @@ os.makedirs(settings.uploads_dir, exist_ok=True)
 
 
 
+# Жизненный цикл приложения при старте и остановке
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     yield
@@ -47,6 +48,7 @@ app.include_router(export_router.router)
 
 
 
+# Проверка, что API отвечает
 @app.get("/health")
 def health():
     return {"status": "ok"}

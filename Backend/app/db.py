@@ -17,6 +17,7 @@ class Base(DeclarativeBase):
 
 
 
+# Открывает сессию базы на время запроса
 def get_db() -> Generator:
     db = SessionLocal()
     try:

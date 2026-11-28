@@ -13,12 +13,14 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { TodosPage } from "./pages/TodosPage";
 import { useAuthStore } from "./store/authStore";
 
+// Страницы входа: если токен есть, уводит на главную
 function GuestOnly({ children }) {
   const token = useAuthStore((s) => s.accessToken);
   if (token) return <Navigate to="/" replace />;
   return children;
 }
 
+// Карта адресов приложения
 export function App() {
   return (
     <Routes>

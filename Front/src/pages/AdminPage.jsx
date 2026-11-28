@@ -6,12 +6,14 @@ import { ErrorMessage } from "../components/ErrorMessage";
 import { Loader } from "../components/Loader";
 import { PageTitle } from "../components/PageTitle";
 
+// Админ-панель
 export function AdminPage() {
   const [users, setUsers] = useState([]);
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Загружает список с сервера
   async function load() {
     setLoading(true);
     try {

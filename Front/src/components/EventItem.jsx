@@ -1,5 +1,6 @@
 import { Button, Card } from "antd";
 
+// Строка события в календаре
 export function EventItem({ event, onDelete }) {
   return (
     <Card
@@ -24,6 +25,7 @@ const dateTimeFmt = new Intl.DateTimeFormat("ru", {
   minute: "2-digit",
 });
 
+// Форматирует даты события для отображения
 function EventDates({ start, end }) {
   return (
     <div style={{ color: "#666", marginBottom: 8 }}>

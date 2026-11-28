@@ -10,6 +10,7 @@ from app.schemas import CreateTodoRequest, TodoDto, UpdateTodoRequest
 router = APIRouter(prefix="/api/todos", tags=["todos"])
 
 
+# Собирает DTO из модели
 def _map(t: Todo) -> TodoDto:
     return TodoDto(
         id=t.id,
@@ -24,6 +25,7 @@ def _map(t: Todo) -> TodoDto:
     )
 
 
+# Список задач с фильтрами done и priority
 @router.get("", response_model=list[TodoDto])
 def get_all(
     db: DbSession,
@@ -40,6 +42,7 @@ def get_all(
     return [_map(t) for t in todos]
 
 
+# Просроченные невыполненные задачи
 @router.get("/overdue", response_model=list[TodoDto])
 def get_overdue(db: DbSession, user_id: UserId):
     now = datetime.now(timezone.utc)
@@ -57,6 +60,7 @@ def get_overdue(db: DbSession, user_id: UserId):
     return [_map(t) for t in todos]
 
 
+# Одна задача по id
 @router.get("/{todo_id}", response_model=TodoDto)
 def get_one(todo_id: uuid.UUID, db: DbSession, user_id: UserId):
     t = db.query(Todo).filter(Todo.id == todo_id, Todo.user_id == user_id, Todo.is_deleted.is_(False)).first()
@@ -65,6 +69,7 @@ def get_one(todo_id: uuid.UUID, db: DbSession, user_id: UserId):
     return _map(t)
 
 
+# Создание задачи
 @router.post("", response_model=TodoDto, status_code=status.HTTP_201_CREATED)
 def create(req: CreateTodoRequest, db: DbSession, user_id: UserId):
     if req.priority < 1 or req.priority > 3:
@@ -86,6 +91,7 @@ def create(req: CreateTodoRequest, db: DbSession, user_id: UserId):
     return _map(todo)
 
 
+# Правка задачи
 @router.put("/{todo_id}", response_model=TodoDto)
 def update(todo_id: uuid.UUID, req: UpdateTodoRequest, db: DbSession, user_id: UserId):
     todo = db.query(Todo).filter(Todo.id == todo_id, Todo.user_id == user_id, Todo.is_deleted.is_(False)).first()
@@ -109,6 +115,7 @@ def update(todo_id: uuid.UUID, req: UpdateTodoRequest, db: DbSession, user_id: U
     return _map(todo)
 
 
+# Переключает флаг выполнения задачи
 @router.patch("/{todo_id}/toggle", response_model=TodoDto)
 def toggle(todo_id: uuid.UUID, db: DbSession, user_id: UserId):
     todo = db.query(Todo).filter(Todo.id == todo_id, Todo.user_id == user_id, Todo.is_deleted.is_(False)).first()
@@ -121,6 +128,7 @@ def toggle(todo_id: uuid.UUID, db: DbSession, user_id: UserId):
     return _map(todo)
 
 
+# Мягкое удаление задачи
 @router.delete("/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete(todo_id: uuid.UUID, db: DbSession, user_id: UserId):
     todo = db.query(Todo).filter(Todo.id == todo_id, Todo.user_id == user_id, Todo.is_deleted.is_(False)).first()

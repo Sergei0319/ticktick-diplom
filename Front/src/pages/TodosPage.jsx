@@ -6,6 +6,7 @@ import { PageTitle } from "../components/PageTitle";
 import { TodoCreateForm } from "../components/TodoCreateForm";
 import { TodoItem } from "../components/TodoItem";
 
+// Список задач
 export function TodosPage() {
   const [todos, setTodos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,6 +14,7 @@ export function TodosPage() {
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState(2);
 
+  // Загружает список с сервера
   async function load() {
     setLoading(true);
     try {

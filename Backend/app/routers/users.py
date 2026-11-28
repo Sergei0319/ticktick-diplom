@@ -6,6 +6,7 @@ from app.schemas import UserProfileDto
 router = APIRouter(prefix="/api/users", tags=["users"])
 
 
+# Профиль текущего пользователя
 @router.get("/me", response_model=UserProfileDto)
 def get_me(user: CurrentUser):
     return UserProfileDto(

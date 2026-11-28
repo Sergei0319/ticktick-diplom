@@ -8,6 +8,7 @@ from app.models import CalendarEvent, Note, SyncCheckpoint, Todo
 router = APIRouter(prefix="/api/sync", tags=["sync"])
 
 
+# Выдаёт изменения для синхронизации клиента
 @router.get("")
 def pull(
     db: DbSession,
@@ -45,6 +46,7 @@ def pull(
         checkpoint.last_sync = now
     db.commit()
 
+    # Note row
     def note_row(n: Note):
         return {
             "id": n.id,
@@ -57,6 +59,7 @@ def pull(
             "updatedAt": n.updated_at,
         }
 
+    # Event row
     def event_row(e: CalendarEvent):
         return {
             "id": e.id,
@@ -72,6 +75,7 @@ def pull(
             "updatedAt": e.updated_at,
         }
 
+    # Todo row
     def todo_row(t: Todo):
         return {
             "id": t.id,

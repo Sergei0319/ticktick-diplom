@@ -10,6 +10,7 @@ const baseItems = [
   { key: "/profile", label: "Личный кабинет" },
 ];
 
+// Боковое меню навигации
 export function SideMenu() {
   const nav = useNavigate();
   const loc = useLocation();

@@ -8,6 +8,7 @@ import { PageTitle } from "../components/PageTitle";
 import { ProfileCard } from "../components/ProfileCard";
 import { useAuthStore } from "../store/authStore";
 
+// Профиль и выход
 export function ProfilePage() {
   const nav = useNavigate();
   const logoutStore = useAuthStore((s) => s.logout);
@@ -28,6 +29,7 @@ export function ProfilePage() {
     })();
   }, []);
 
+  // Выход и сброс сессии на клиенте
   async function logout() {
     try {
       if (refreshToken) {

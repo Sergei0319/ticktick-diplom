@@ -4,6 +4,7 @@ import { SideMenu } from "./SideMenu";
 
 const { Header, Sider, Content } = Layout;
 
+// Оболочка приложения с меню и контентом
 export function AppLayout() {
   return (
     <Layout style={{ minHeight: "100vh" }}>
